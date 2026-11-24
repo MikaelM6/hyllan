@@ -9,10 +9,10 @@ function CategoryList({ categories }) {
       {categories.map((category) => (
         <li key={category.slug}>
           <Link
-            to={`/categories/${category.name.toLowerCase()}`}
+            to={`/categories/${category.slug.toLowerCase()}`}
             className={styles.chip}
           >
-            {category.name}
+            {category.slug}
           </Link>
         </li>
       ))}
