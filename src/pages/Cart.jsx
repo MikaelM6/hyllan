@@ -2,17 +2,7 @@ import { Link } from "react-router-dom";
 import { formatPrice } from "../utils/formatPrice.js";
 
 function Cart({ cart, updateQuantity, removeFromCart }) {
-  if (cart.length === 0) {
-    return (
-      <section>
-        <h1 className="page-title">Varukorg</h1>
-        <p>Din varukorg är tom.</p>
-        <Link to="/products">Se produkter</Link>
-      </section>
-    );
-  }
-
-  const total = cart.reduce((sum, item) => sum + item.product.price, 0);
+  const total = cart.reduce((sum, item) => sum + item.product.price * item.quantity,0);
 
   return (
     <section>
