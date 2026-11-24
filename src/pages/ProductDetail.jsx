@@ -30,6 +30,9 @@ function ProductDetail({ addToCart }) {
 
   if (!product) return <Loading />;
 
+  const outOfStock = product.stock === 0;
+  const lowStock = product.stock > 0 && product.stock < 10;
+
   return (
     <article>
       <Link to="/products" className={styles.back}>
@@ -53,9 +56,21 @@ function ProductDetail({ addToCart }) {
           </p>
           <p className={styles.price}>{formatPrice(product.price)}</p>
           <p>{product.description}</p>
-          <p className={styles.stock}>I lager: {product.stock} st</p>
+          {outOfStock ? (
+            <p className={styles.stock}>Slut i lager</p>
+          ) : lowStock ? (
+            <p className={styles.stock} style={{ color: "orange" }}>
+              Endast {product.stock} kvar!
+            </p>
+          ) : (
+            <p className={styles.stock}>I lager</p>
+          )}
 
-          <button className="button" onClick={() => addToCart(product)}>
+          <button 
+          className="button" 
+          onClick={() => addToCart(product)}
+          disabled={outOfStock}
+          >
             Lägg i varukorgen
           </button>
 
