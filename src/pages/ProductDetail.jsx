@@ -5,6 +5,7 @@ import { formatPrice } from "../utils/formatPrice.js";
 import ProductGrid from "../components/ProductGrid.jsx";
 import Loading from "../components/Loading.jsx";
 import styles from "./ProductDetail.module.css";
+import ReviewList from "../components/ReviewList.jsx";
 
 function ProductDetail({ addToCart }) {
   const { id } = useParams();
