@@ -26,7 +26,7 @@ function ProductDetail({ addToCart }) {
     }
 
     getProduct();
-  }, []);
+  }, [id]);
 
   if (!product) return <Loading />;
 
