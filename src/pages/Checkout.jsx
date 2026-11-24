@@ -23,7 +23,13 @@ function Checkout({ cart, clearCart }) {
     // Här skulle beställningen skickas till en server.
     console.log("Beställning:", form, cart);
 
-    navigate("/order-confirmation");
+    const summary = {
+      name: form.name,
+      itemCount: cart.length,
+    };
+
+    clearCart();
+    navigate("/order-confirmation", { state: summary});
   }
 
   return (
